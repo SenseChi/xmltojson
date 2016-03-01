@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xml2json">
+    <output-path>$PROJECT_DIR$/xml2json</output-path>
+    <root id="archive" name="xml2json.war" />
+  </artifact>
+</component>
