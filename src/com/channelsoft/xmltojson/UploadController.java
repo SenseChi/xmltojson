@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,9 +39,8 @@ public class UploadController
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/upload")
-	public ModelAndView upload(HttpServletRequest request, HttpServletResponse response, ModelMap model)
-	        throws IOException
-	{
+    @ResponseBody
+	public String upload(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile mFile = multipartRequest.getFile("file");
 		String path = request.getSession().getServletContext().getRealPath("/WEB-INF/");
@@ -59,8 +59,7 @@ public class UploadController
 		System.out.println("????"+path);
 		String str = new XMLSerializer().read(fileContent).toString();
 		System.out.println(str);
-		return new ModelAndView("message", "str", str);
-
+		return str;
 	}
 
 	public static String read(String path, String encoding) throws IOException
