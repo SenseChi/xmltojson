@@ -28,6 +28,10 @@ li.node .before{
     width:28px;
     text-align:center;
     cursor:pointer;
+    -moz-user-select: none;/*Firefox*/
+    -ms-user-select: none;/*ie10*/
+    -webkit-user-select: none;/*Chrome*/
+    user-select: none;
 }
 
 li.node .before .plus{
