@@ -19,11 +19,15 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	   <context-param>   
+	   <context-param>
         <param-name>contextConfigLocation</param-name>   
         <param-value>/WEB-INF/spring-servlet.xml</param-value>   
-    </context-param>   
-    <listener>   
+    </context-param>
+    <mime-mapping>
+        <extension>xml</extension>
+        <mime-type>application/xml</mime-type>
+    </mime-mapping>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>   
     </listener>   
 </web-app>
