@@ -11,9 +11,36 @@
 	margin: 10px 10px 10px 0;
 }
 #json li {
+    position: relative;
 	line-height: 28px;
-	padding-left: 10px;
 	list-style-type: none;
+    padding-left:30px;
+}
+li.node .before{
+    position: absolute;
+    top:0;
+    left:0;
+    background: #676767;
+    color:#fff;
+    font-size:16px;
+    height:28px;
+    line-height:28px;
+    width:28px;
+    text-align:center;
+    cursor:pointer;
+}
+
+li.node .before .plus{
+    display:none;
+}
+li.node.closed .before .minus{
+    display:none;
+}
+li.node.closed .before .plus{
+    display: inline;
+}
+li.node.closed ul{
+    display:none;
 }
 #json li .node-name, #json li .node-value {
 	padding: 0 10px;

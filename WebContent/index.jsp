@@ -66,7 +66,8 @@
                 nb.setAttribute ("class", "node-name");
                 ne.setAttribute ("class", "node-name");
                 nb.innerHTML = ne.innerHTML = i;
-                p.setAttribute('class','node open');
+                p.setAttribute('class','node');
+                $(p).append('<span class="before"><span class="plus">+</span><span class="minus">-</span></span>');
                 p.setAttribute('id',cId);
                 p.appendChild (nb);
                 p.appendChild (c);
@@ -86,7 +87,7 @@
         dataType: 'json',
         done: function (e, d) {
             //上传成功后，解析后的JSON数据
-            console.log(d.result);
+            //console.log(d.result);
             //$('#text-entity').summernote('code',JSON.stringify(d.result));
             var $json = $('#json').empty();
             data = d.result;
@@ -103,7 +104,7 @@
                 }
                 return $this;
             }).on('change', function() {
-                console.log('change:' + $(this).parents('li').attr('id'));
+                //console.log('change:' + $(this).parents('li').attr('id'));
                 var id = $(this).parents('li').attr('id');
                 var arr = id.split('&');
                 var str = 'data';
@@ -112,7 +113,11 @@
                 }
                 str += '="'+$(this).text()+'";';
                 (new Function(str))();
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
+            });
+            $(".node .before").click(function(){
+                var $this = $(this).closest('li');
+                $this.toggleClass('closed');
             });
         }
     }).prop('disabled', !$.support.fileInput)
