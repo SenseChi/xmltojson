@@ -30,7 +30,6 @@
 </div>
 <ul id="json"></ul>
 <script type="text/javascript">
-
     var data;
     var container = $ ('#json');
     $ (document).ready (function () {
@@ -39,31 +38,13 @@
             minHeight: null,
             maxHeight: null
         });
-        $ ('#file .choose-btn').on ('click', function () {
-            $ ('#file .choose-file').trigger ('click');
+        $('#file .choose-btn.c').on ('click', function () {
+            $ ('#fileupload').trigger ('click');
         });
-        $("[contenteditable='true']").on('focus', function() {
-            var $this = $(this);
-            $this.data('before', $this.html());
-            return $this;
-        }).on('blur keyup paste', function() {
-            var $this = $(this);
-            if ($this.data('before') !== $this.html()) {
-                $this.data('before', $this.html());
-                $this.trigger('change');
-            }
-            return $this;
-        }).on('change', function() {
-            console.log('change:' + $(this).parents('li').attr('id'));
-            var id = $(this).parents('li').attr('id');
-            var arr = id.split('&');
-            var str = 'data';
-            for(var i = 0,len=arr.length;i<len;i++){
-                str += '["'+arr[i]+'"]';
-            }
-            str += '="'+$(this).text()+'";';
-            (new Function(str))();
-            console.log(JSON.stringify(data));
+        $('#file .choose-btn.s').on ('click', function () {
+            $.post('<%=request.getContextPath()%>/file/rewriteback',data,function(data){
+                console.log(data);
+            });
         });
     });
 
