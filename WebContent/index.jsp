@@ -39,9 +39,11 @@
             maxHeight: null
         });
         $('#file .choose-btn.c').on ('click', function () {
-            $ ('#fileupload').trigger ('click');
+            console.log('startTime:'+new Date().getTime());
+            $('#fileupload').trigger ('click');
         });
         $('#file .choose-btn.s').on ('click', function () {
+            console.log('上传JSON:'+JSON.stringify(data));
             var json = encodeURI(JSON.stringify(data));
             $.post('<%=request.getContextPath()%>/convert/doConvert',{json:json},function(data){
                 console.log(data);
@@ -91,6 +93,7 @@
             //上传成功后，解析后的JSON数据
             //console.log(d.result);
             //$('#text-entity').summernote('code',JSON.stringify(d.result));
+            console.log('endTime:'+new Date().getTime());
             var $json = $('#json').empty();
             data = d.result;
             parseJSON(data,$json,"");
