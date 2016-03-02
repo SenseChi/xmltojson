@@ -4,11 +4,11 @@
 }
 #json {
     position: fixed;
-    top:90px;
+    top:100px;
     bottom:0;
-    left:0;
-    right:0;
     overflow: auto;
+    width:100%;
+	margin: 10px 10px 10px 0;
 }
 #json li {
 	line-height: 28px;
@@ -46,16 +46,25 @@
 	margin: 10px;
 }
 #file .choose-btn {
+	float: left;
 	cursor: pointer;
 	height: 40px;
 	padding: 0 10px;
-	border: solid 1px #ccc;
-	border-radius: 3px;
+	border-style: solid;
+	border-color: #ccc;
 	line-height: 40px;
 	font-weight: bold;
 }
 #file .choose-btn:hover {
 	background-color: #f5f5f5;
+}
+#file .choose-btn.c {
+	border-width: 1px;
+	border-radius: 3px 0 0 3px;
+}
+#file .choose-btn.s {
+	border-width: 1px 1px 1px 0;
+	border-radius: 0 3px 3px 0;
 }
 #file .choose-file {
 	display: none;
@@ -109,10 +118,4 @@
 	border-bottom: none;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
-}
-.top-bar{
-    position: fixed;
-    top:50px;
-    left:0;
-    right:0;
 }
