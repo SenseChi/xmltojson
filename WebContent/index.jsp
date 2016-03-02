@@ -42,8 +42,10 @@
             $ ('#fileupload').trigger ('click');
         });
         $('#file .choose-btn.s').on ('click', function () {
-            $.post('<%=request.getContextPath()%>/file/rewriteback',data,function(data){
+            var json = encodeURI(JSON.stringify(data));
+            $.post('<%=request.getContextPath()%>/convert/doConvert',{json:json},function(data){
                 console.log(data);
+                $('#file').append('<a href="<%=request.getContextPath()%>'+data+'">DownLoad</a>');
             });
         });
     });
